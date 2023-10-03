@@ -8,7 +8,7 @@ public class PasswordCreate {
     private Scanner sc = null;
     private PrintStream saidaPadrao = System.out;
 
-    private String auth = "negotonio";
+    private String auth = "uA1j34K10lk";
     private boolean autorizado = false;
 
     public PasswordCreate() {
@@ -18,17 +18,20 @@ public class PasswordCreate {
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
+        executa();
     }
 
     public void executa() {
         String senha = sc.nextLine();
         if(auth.equals(senha)) {
             autorizado = true;
-            System.out.println("Toninho da massa");
+            System.out.println("Voce foi atuenticado com sucesso!");
         } else {
             System.out.println("Senha incorreta!");
         }
     }
+
+    
 
 
 
