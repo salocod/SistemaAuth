@@ -9,7 +9,6 @@ public class PasswordCreate {
     private PrintStream saidaPadrao = System.out;
 
     private String auth = "uA1j34K10lk";
-    private boolean autorizado = false;
 
     public PasswordCreate() {
         try {
@@ -24,7 +23,6 @@ public class PasswordCreate {
     public void executa() {
         String senha = sc.nextLine();
         if(auth.equals(senha)) {
-            autorizado = true;
             System.out.println("Voce foi atuenticado com sucesso!");
         } else {
             System.out.println("Senha incorreta!");
