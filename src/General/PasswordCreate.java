@@ -1,12 +1,11 @@
+package General;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class PasswordCreate {
 
-    private Scanner sc = null;
-    private PrintStream saidaPadrao = System.out;
+    private Scanner sc;
 
     private String auth = "uA1j34K10lk";
 

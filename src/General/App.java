@@ -1,12 +1,11 @@
-import java.util.ArrayList;
+package General;
 
 public class App {
 
     PasswordCreate ps;
-    private ArrayList<Integer> lista = new ArrayList<>();
-    
 
     public App() {
         ps = new PasswordCreate();
     }
+    
 }
