@@ -1,8 +1,7 @@
-import General.App;
+import General.Authentication;
 
 public class Main {
-
     public static void main(String[] args) {
-        new App();
+        new Authentication();
     }
 }

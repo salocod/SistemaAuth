@@ -1,17 +1,13 @@
 package General;
-public class Usuario {
+public abstract class Usuario {
     
-    private boolean isLogged;
+    private static boolean isLogged;
 
-    public Usuario() {
-        
-    }
-
-    public boolean getLog() {
+    public static boolean getLog() {
         return isLogged;
     }
 
-    public boolean changeLog() {
+    public static boolean changeLog() {
         if(isLogged) {
             return isLogged = false;
         } else {

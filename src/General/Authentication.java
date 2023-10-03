@@ -1,35 +1,79 @@
 package General;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.util.Random;
 import java.util.Scanner;
 
-public class PasswordCreate {
+public class Authentication {
 
-    private Scanner sc;
-    private String auth = "uA1j34K10lk";
+    private Scanner sc = new Scanner(System.in);
+    private int counter = 1;
+    private boolean captcha;
 
-    public PasswordCreate() {
-        try {
-			BufferedReader streamEntrada = new BufferedReader(new FileReader("entrada.txt"));
-			sc = new Scanner(streamEntrada);
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public Authentication() {
         executa();
     }
 
     public void executa() {
-        String senha = sc.nextLine();
-        if(auth.equals(senha)) {
-            System.out.println("Voce foi atuenticado com sucesso!");
-            Usuario.changeLog();
-        } else {
-            System.out.println("Senha incorreta!");
+        try {
+        menu();
+        int opcao = sc.nextInt();
+        while (opcao!=0) {
+        switch(opcao) {
+            case 1:
+            TwoFactorAuth();
+                break;
+            default:
+                break;
+            }
+        menu();
+        opcao = sc.nextInt();
+        }
+        } catch(Exception e) {
+
         }
     }
 
-    
+    public void TwoFactorAuth() {
+        int cont = 0;
+        char[] letters = new char[5];
+        String allUpper = "ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789";
 
+        for (int i = 0; i < letters.length; i++) {
+            letters[i] = allUpper.charAt(new Random().nextInt(allUpper.length()));
+        }
+        System.out.println("Iniciando captcha... \n");
 
+        for (int i = 0; i < letters.length; i++) {
+            if(cont == counter-1) {
+                String cap = Character.toString(letters[i]);
+                System.out.println("Insira a letra correta: ");
+                System.out.println(cap);
+                String x = sc.next();
+                if(x.equals(cap)) {
+                    counter++;
+                    cont++;
+                    captcha = true;
+                } else {
+                    System.out.println("Captcha invalido! Tente novamente!\n");
+                    TwoFactorAuth();
+                }
+                System.out.println("Autenticado " + (i+1) + "/5");
+            }
+        }
+    }
+
+    private void menu() {   
+        System.out.println("-------------------------");
+        System.out.println("Selecione sua opcao!");
+        System.out.println("[1] Iniciar o captcha! [" + getBoolean(captcha) + "]");
+        System.out.println("[0] Finalizar o programa");
+    }
+
+    public String getBoolean(boolean b) {
+        if(b) {
+            return "V";
+        } else {
+            return "X";
+        }
+    }
 
 }
