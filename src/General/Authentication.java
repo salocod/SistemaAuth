@@ -68,12 +68,6 @@ public class Authentication {
         System.out.println("[0] Finalizar o programa");
     }
 
-    public String getBoolean(boolean b) {
-        if(b) {
-            return "V";
-        } else {
-            return "X";
-        }
-    }
+    public String getBoolean(boolean b) {if(b) return "V"; else return "X";}
 
 }

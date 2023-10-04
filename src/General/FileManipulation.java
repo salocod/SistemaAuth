@@ -8,23 +8,40 @@ import java.util.Scanner;
 
 public class FileManipulation {
 
-    private Scanner sc = null;
-    private PrintStream saidaPadrao = System.out;
+    private static Scanner sc = null;
+    private static PrintStream saidaPadrao = System.out;
+    private static BufferedReader streamEntrada;
+    private static PrintStream streamSaida;
 
     public FileManipulation() {
         try{
-            BufferedReader streamEntrada = new BufferedReader(new FileReader("entrada.txt"));
+            streamEntrada = new BufferedReader(new FileReader("banco.txt"));
             sc = new Scanner(streamEntrada);
-            PrintStream streamSaida = new PrintStream("saida.txt", StandardCharsets.UTF_8);
+            streamSaida = new PrintStream("banco.txt", StandardCharsets.UTF_8);
             System.setOut(streamSaida);
         } catch(Exception e) {
                 System.out.println(e.getMessage());
         }
     }
 
-    public void restauraES() {
+    public static void restauraES() {
         System.setOut(saidaPadrao);
         sc = new Scanner(System.in);
     }
 
+    public static void retornaES() {
+        sc = new Scanner(streamEntrada);
+        System.setOut(streamSaida);
+    }
+
+    public void escreverDados(String texto) {
+        System.out.println(texto);
+    }
+
+    public void lerDados(String texto) {
+        while(sc.hasNextLine()) {
+            if(sc.nextLine().contains(texto)) {
+            }
+        }
+    }
 }
